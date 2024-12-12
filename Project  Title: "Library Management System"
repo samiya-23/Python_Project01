@@ -1,0 +1,39 @@
+#1. Data Initialization
+ # ● Use a CSV file to store initial library data:
+  #    ○ Fields: Book ID, Title, Author, Genre, Availability (Yes/No),
+  #    Borrower (if any).
+#  ●  Load the data into a Pandas DataFrame for processing.
+
+
+import csv
+
+library_data = {
+    "Book ID": [1, 2, 3, 4, 5, 6],
+    "Title": ["To Kill a Mockingbird", "1984", "The Great Gatsby", "Dune", "The Alchemist" , "Gone Girl"],
+    "Author": ["Harper Lee", "George Orwell", "F. Scott Fitzgerald", "Frank Herbert", "Paulo Coelho","Gillian Flynn"],
+    "Genre": ["Classic Fiction", "Dystopian Fiction", "Classic Romance/Drama", "Science Fiction", "	Inspirational Fiction","Thriller/Psychological Fiction"],
+    "Availability": ["Yes", "No", "Yes", "Yes", "No", "Yes"],
+    "Borrower": ["Sajib", None, "Sanjida", "Jabir", "Bithi", None]
+}
+csv_file = "library_data.csv"
+with open(csv_file, mode='w', newline='', encoding='utf-8') as file:
+    writer = csv.writer(file)
+    writer.writerow(library_data.keys())
+    num_books = len(library_data["Book ID"])
+    
+    for i in range(num_books):
+        min_len = min(len(library_data[key]) for key in library_data)
+        
+        if i < min_len:
+          writer.writerow([
+                library_data["Book ID"][i],
+                library_data["Title"][i],
+                library_data["Author"][i],
+                library_data["Genre"][i],
+                library_data["Availability"][i],
+                library_data["Borrower"][i]
+            ])
+print(f"Library data has been saved to {csv_file}.")
+
+
+
