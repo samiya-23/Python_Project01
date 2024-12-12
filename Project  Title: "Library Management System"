@@ -326,7 +326,6 @@ def filter_books():
     except ValueError:
         print("Invalid input. Please enter a valid integer choice.")
 
-# Menu for testing the functionality
 while True:
     print("\n--- Search and Filter Features ---")
     print("1. Search for Books")
